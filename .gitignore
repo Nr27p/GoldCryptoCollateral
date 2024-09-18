@@ -1,0 +1,37 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Hardhat specific files
+cache/
+artifacts/
+
+# dotenv environment files (for private keys, API keys, etc.)
+.env
+
+# Hardhat generated keys (if used)
+*.local
+*.secret
+
+# VS Code workspace settings
+.vscode/
+
+# IDE specific directories (optional)
+.idea/
+.DS_Store
+
+# Log files
+logs/
+*.log
+
+# Build files for React
+build/
+dist/
+
+# Coverage output (if using coverage tools)
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
