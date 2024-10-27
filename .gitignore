@@ -1,37 +1,30 @@
-# Node modules
-node_modules/
-npm-debug.log
-yarn-error.log
 
-# Hardhat specific files
-cache/
-artifacts/
+# smartcontracts
+/smart-contracts/node_modules
+/smart-contracts/.env
 
-# dotenv environment files (for private keys, API keys, etc.)
-.env
+# Hardhat files
+/smart-contracts/cache
+/smart-contracts/artifacts
 
-# Hardhat generated keys (if used)
-*.local
-*.secret
+# TypeChain files
+/smart-contracts/typechain
+/smart-contracts/typechain-types
 
-# VS Code workspace settings
-.vscode/
+# solidity-coverage files
+/smart-contracts/coverage
+/smart-contracts/coverage.json
 
-# IDE specific directories (optional)
-.idea/
-.DS_Store
+# Hardhat Ignition default folder for deployments against a local node
+/smart-contracts/ignition/deployments/chain-31337
 
-# Log files
-logs/
-*.log
+# Frontend
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Build files for React
-build/
-dist/
+# dependencies
+/frontend/node_modules
+ 
 
-# Coverage output (if using coverage tools)
-coverage/
+#backend
 
-# Temporary files
-*.tmp
-*.swp
+/backend/node_modules
