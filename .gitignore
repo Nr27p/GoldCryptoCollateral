@@ -22,9 +22,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/frontend/node_modules
+/gcc_fnt/node_modules
 
 
 #backend
 
-/backend/node_modules
+/gcc_bk/node_modules
