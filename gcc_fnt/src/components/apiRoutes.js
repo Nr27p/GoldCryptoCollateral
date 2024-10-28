@@ -1,0 +1,12 @@
+export const host = "http://localhost:5000";
+export const loginRoute = `${host}/auth/login`;
+export const registerRoute = `${host}/auth/register`;
+export const authCheck = `${host}/auth/check-auth`;
+// export const getChatHistory = `${host}/user/getChatHistory`
+// export const friendReqs = `${host}/user/friend-requests`
+// export const acceptFriendRequest = `${host}/user/accept-friend-request`
+export const logout = `${host}/auth/logout`
+// export const friendsRoute = `${host}/user/friends`
+// export const search = `${host}/user/search`
+// export const sentFriendRequests = `${host}/user/send-friend-request`
+// export const getUserRequestId = `${host}/user//getUserRequestId`
