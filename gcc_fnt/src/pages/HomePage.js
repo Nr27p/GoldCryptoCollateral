@@ -157,10 +157,10 @@ const Home = () => {
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Welcome to <span className="text-indigo-600">Chat App</span>
+              Welcome to <span className="text-yellow-300">Gold</span> Crypto Collateral
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              One of the most secure app for chatting with your friends and family.
+              One of the most secure and efficient app for loan and to buy gold.
             </p>
             
             <div className="mt-10 flex items-center justify-center gap-x-6">
