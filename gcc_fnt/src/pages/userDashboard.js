@@ -80,9 +80,9 @@ const UserDashboard = () => {
             >
               Logout
             </button>
-            <Link to="/gold-loan">
+            <Link to="/buy-gold">
               <button className="text-sm font-semibold leading-6 text-gray-900">
-                Gold Loan
+                Buy Gold Token
               </button>
             </Link>
           </div>

@@ -4,9 +4,7 @@ import { BrowserRouter as BrowserRouterRouter, Route, Routes } from 'react-route
 import Home from './pages/HomePage';
 import Login from './components/loginComponent';
 import Register from './components/registerComponent';
-import GoldLoan from './pages/goldLoan';
-// import NotificationComponent from './components/notificationComponent';
-// import ChatComponent from './components/chatComponent'; // Make sure the import is correct
+import PurchaseGold from './pages/purchaseGold';
 import UserDashboard from './pages/userDashboard';
 
 function App() {
@@ -18,9 +16,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/" exact element={<Home />} />
           <Route path="/user-dashboard" exact element={<UserDashboard />} />
-          <Route path="/gold-loan" exact element={<GoldLoan />} />
-          {/* <Route path="/chat/:friendId" element={<ChatComponent />} /> Ensure the element is correctly set */}
-          {/* <Route path="/notifications" exact element={<NotificationComponent />} /> */}
+          <Route path="/buy-gold" exact element={<PurchaseGold />} />
         </Routes>
       </div>
     </BrowserRouterRouter>
@@ -28,16 +24,3 @@ function App() {
 }
 
 export default App;
-
-// src/App.js
-// import React from "react";
-
-// function App() {
-//   return (
-//     <div className="flex items-center justify-center h-screen bg-blue-50">
-//       <h1 className="text-4xl font-bold text-blue-600">Hello, Tailwind CSS!</h1>
-//     </div>
-//   );
-// }
-
-// export default App;
