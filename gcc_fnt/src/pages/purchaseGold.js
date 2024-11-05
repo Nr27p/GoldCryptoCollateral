@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import GoldTokenABI from "../utils/GoldToken.json";
 const contractAddress = process.env.REACT_APP_GOLD_TOKEN_ADDRESS;
+// console.log("Loaded Gold Token Address:", contractAddress);  // Check the address
 const contractABI = GoldTokenABI.abi;
 
 const PurchaseGold = () =>{

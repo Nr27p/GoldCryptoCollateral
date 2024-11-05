@@ -6,6 +6,11 @@ import Login from './components/loginComponent';
 import Register from './components/registerComponent';
 import PurchaseGold from './pages/purchaseGold';
 import UserDashboard from './pages/userDashboard';
+// import LenderDashboard from './pages/lender';
+import LenderPage from './pages/LenderPage';
+import BorrowerPage from './pages/BorrowerPage';
+// import BorrowerDashboard from './pages/borrower';
+
 
 function App() {
   return (
@@ -17,7 +22,10 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/user-dashboard" exact element={<UserDashboard />} />
           <Route path="/buy-gold" exact element={<PurchaseGold />} />
-        </Routes>
+          <Route path="/lender-dashboard" exact element={<LenderPage />} />
+          <Route path="/borrower-dashboard" exact element={<BorrowerPage />} />
+          {/* <Route path="/borrower-dashboard" exact element={<BorrowerDashboard />} /> */}
+          </Routes>
       </div>
     </BrowserRouterRouter>
   );
