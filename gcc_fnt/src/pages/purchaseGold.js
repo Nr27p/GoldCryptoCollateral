@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import GoldTokenABI from "../utils/GoldToken.json";
 const contractAddress = process.env.REACT_APP_GOLD_TOKEN_ADDRESS;
-// console.log("Loaded Gold Token Address:", contractAddress);  // Check the address
 const contractABI = GoldTokenABI.abi;
 
 const PurchaseGold = () =>{
     const [account, setAccount] = useState('');
-    const [balance, setBalance] = useState('0');
+    const [ethBalance, setEthBalance] = useState('0');
+    const [goldBalance, setGoldBalance] = useState('0');
     const [ethAmount, setEthAmount] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -16,7 +16,6 @@ const PurchaseGold = () =>{
     const [exchangeRate, setExchangeRate] = useState('0');
 
     useEffect(() => {
-        // Listen for account changes
         if (window.ethereum) {
             window.ethereum.on('accountsChanged', handleAccountChange);
             window.ethereum.on('chainChanged', () => window.location.reload());
@@ -30,16 +29,17 @@ const PurchaseGold = () =>{
 
     useEffect(() => {
         if (account) {
-            fetchBalance();
+            fetchGoldBalance();
             fetchExchangeRate();
+            fetchEthBalance();
         }
     }, [account]);
 
     const handleAccountChange = async (accounts) => {
         if (accounts.length === 0) {
-            // Handle disconnection
             setAccount('');
-            setBalance('0');
+            setGoldBalance('0');
+            setEthBalance('0');
         } else {
             setAccount(accounts[0]);
         }
@@ -61,8 +61,9 @@ const PurchaseGold = () =>{
             setAccount(accounts[0]);
             setContract(tokenContract);
 
-            await fetchBalance();
+            await fetchGoldBalance();
             await fetchExchangeRate();
+            await fetchEthBalance();
         } catch (err) {
             setError(err.message);
         } finally {
@@ -70,14 +71,26 @@ const PurchaseGold = () =>{
         }
     };
 
-    const fetchBalance = async () => {
+    const fetchGoldBalance = async () => {
         try {
             if (contract && account) {
                 const balance = await contract.balanceOf(account);
-                setBalance(ethers.formatEther(balance));
+                setGoldBalance(ethers.formatEther(balance));
             }
         } catch (err) {
-            console.error('Error fetching balance:', err);
+            console.error('Error fetching GOLD balance:', err);
+        }
+    };
+
+    const fetchEthBalance = async () => {
+        try {
+            if (account) {
+                const provider = new ethers.BrowserProvider(window.ethereum);
+                const balance = await provider.getBalance(account);
+                setEthBalance(ethers.formatEther(balance));
+            }
+        } catch (err) {
+            console.error('Error fetching ETH balance:', err);
         }
     };
 
@@ -102,13 +115,11 @@ const PurchaseGold = () =>{
                 value: ethers.parseEther(ethAmount)
             });
             
-            // Wait for transaction to be mined
-            await tx.wait();
+            await tx.wait();  // Wait for transaction to be mined
             
-            // Refresh balance
-            await fetchBalance();
+            await fetchGoldBalance();  // Refresh balance
+            await fetchEthBalance();  // Refresh ETH balance after transaction
             
-            // Clear input
             setEthAmount('');
         } catch (err) {
             setError(err.message);
@@ -140,11 +151,19 @@ const PurchaseGold = () =>{
                                     </div>
                                 )}
 
-                                {/* Balance Display */}
+                                {/* ETH Balance Display */}
                                 {account && (
                                     <div className="mb-4">
-                                        <p className="text-sm text-gray-500">Your Balance:</p>
-                                        <p className="text-2xl font-bold">{balance} GOLD</p>
+                                        <p className="text-sm text-gray-500">Your ETH Balance:</p>
+                                        <p className="text-2xl font-bold">{ethBalance} ETH</p>
+                                    </div>
+                                )}
+
+                                {/* GOLD Balance Display */}
+                                {account && (
+                                    <div className="mb-4">
+                                        <p className="text-sm text-gray-500">Your GOLD Balance:</p>
+                                        <p className="text-2xl font-bold">{goldBalance} GOLD</p>
                                     </div>
                                 )}
 
@@ -181,21 +200,6 @@ const PurchaseGold = () =>{
                                         </button>
                                     </div>
                                 )}
-
-{account && (
-    <div className="mb-4">
-        <p className="text-sm text-gray-500">Connected Account:</p>
-        <p className="font-mono">{`${account.substring(0, 6)}...${account.substring(38)}`}</p>
-        <button
-            onClick={connectWallet}  // This will re-connect and refresh account details
-            className="mt-2 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
-        >
-            Refresh Account
-        </button>
-    </div>
-)}
-
-
 
                                 {/* Error Display */}
                                 {error && (
