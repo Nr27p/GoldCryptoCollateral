@@ -1,7 +1,6 @@
 
 # smartcontracts
 /smart-contracts/node_modules
-/smart-contracts/.env
 
 # Hardhat files
 /smart-contracts/cache
